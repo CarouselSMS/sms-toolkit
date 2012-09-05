@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # Mixins
 module SmsToolkit
   
@@ -11,7 +13,8 @@ module SmsToolkit
       return number if number.blank?
       
       # Cleanup
-      number = number.strip.gsub(/[\-\s\(\)]/, '')
+      number = number.strip
+      number = (number[0, 1] == '+' ? '+' : '') + number.gsub(/[^0-9]/, '')      
       
       number.gsub(/^\+?1?(\d{10})$/, '\1').gsub(/^001?(\d+)$/, '\1')
     end
@@ -58,5 +61,28 @@ module SmsToolkit
     end
 
   end
-  
+
+  # sms text validation
+  class Validations
+
+    @@standard_chars = %w{@ £ $ ¥ è é ù ì ò Ç Ø ø Å å Δ _ Φ Γ Λ Ω Π Ψ Σ Θ Ξ Æ æ ß É ! " # ¤ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? ¡ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Ä Ö Ñ Ü § ¿ a b c d e f g h i j k l m n o p q r s t u v w x y z ä ö ñ ü à}
+    @@extended_chars = [ '^', '{', '}', '\\', '[', '~', ']', '|', '€' ]
+    @@special_chars = ["\n", "\r", " "]
+    @@valid_chars    = @@standard_chars + @@extended_chars + @@special_chars
+
+    def self.validate_sms(model, *attributes)
+      error_message = 'contains invalid characters'
+      attributes.each do |attribute|
+        model.errors.add(attribute, error_message) unless SmsToolkit::Validations.valid_sms?(model.send(attribute))
+      end
+    end
+
+    def self.valid_sms?(text)
+      return true if text.blank?
+      text.each_char do |c|
+        return false unless @@valid_chars.include?(c)
+      end
+      true
+    end
+  end
 end
