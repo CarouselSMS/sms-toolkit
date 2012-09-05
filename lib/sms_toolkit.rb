@@ -86,3 +86,5 @@ module SmsToolkit
     end
   end
 end
+
+ActionView::Base.send :include, SmsToolkit::HelperMixin
