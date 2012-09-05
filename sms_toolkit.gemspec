@@ -4,6 +4,7 @@ require 'sms_toolkit/version'
 
 Gem::Specification.new do |s|
   s.name        = 'sms_toolkit'
+  s.author		= 'Recess Mobile'
   s.version     =  SmsToolkit::VERSION.dup
   s.summary     = 'Collection of tools to help developing SMS applications.'
   s.files       = `git ls-files`.split("\n")
