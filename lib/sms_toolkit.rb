@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'sms_toolkit/engine'
+require 'sms_toolkit/rails/engine'
 
 # Mixins
 module SmsToolkit
