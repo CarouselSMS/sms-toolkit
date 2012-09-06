@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'sms_toolkit/engine'
+
 # Mixins
 module SmsToolkit
   
