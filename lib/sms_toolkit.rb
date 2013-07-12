@@ -54,6 +54,28 @@ module SmsToolkit
 
   end
 
+  class Message
+    attr_accessor :text
+
+    def initialize(text)
+      self.text = text
+    end
+
+    def to_ascii
+      ascii_text = self.text.dup
+
+      ascii_text.gsub!(/[’′ʻ´`‘’]/, "'")
+      ascii_text.gsub!(/[“”‹›«»]/, '"')
+      ascii_text.gsub!(/[‐−‒–—―]/, '-')
+      ascii_text.gsub!(/[…⋯]/, "...")
+      ascii_text.gsub!(/[◦‣∙◘◙]/, '*')
+      ascii_text.gsub!(/[º°]/, 'o')
+      ascii_text.tr!("ÀÁÂÃÄÅàáâãäåĀāĂăĄąÇçĆćĈĉĊċČčÐðĎďĐđÈÉÊËèéêëĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħÌÍÎÏìíîïĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłÑñŃńŅņŇňŉŊŋÒÓÔÕÖØòóôõöøŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠšſŢţŤťŦŧÙÚÛÜùúûüŨũŪūŬŭŮůŰűŲųŴŵÝýÿŶŷŸŹźŻżŽž",
+                     "AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgGgHhHhIIIIiiiiIiIiIiIiIiJjKkkLlLlLlLlLlNnNnNnNnnNnOOOOOOooooooOoOoOoRrRrRrSsSsSsSssTtTtTtUUUUuuuuUuUuUuUuUuUuWwYyyYyYZzZzZz")
+      ascii_text
+    end
+  end
+  
   # Helper mix-in
   module HelperMixin
   
