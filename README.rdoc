@@ -36,6 +36,6 @@ This feature can also be used in views via the helper method:
 
 = License
 
-SMS Toolbox is Copyright © 2013 {Aleksey Gureiev}[mailto:spyromus@noizeramp.com] and {Recess Mobile}[http://recess.im].
+The SMS Toolkit is Copyright © 2013 {Aleksey Gureiev}[mailto:spyromus@noizeramp.com] and {Recess Mobile}[http://recess.im].
 
 It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
