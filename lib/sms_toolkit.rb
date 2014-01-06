@@ -72,11 +72,11 @@ module SmsToolkit
       ascii_text.gsub!(/[º°]/, 'o')
       ascii_text.gsub!(/[\u3133\u200b\u00a0\u2028\u{1f44d}\u{1f383}\u{1f44f}\u{1f483}]/, '')
       ascii_text.gsub!(/[\u{1f600}-\u{1f64f}]/, '') # smiles filtering out
-      ascii_text.gsub!(/\u{189}/, '1/2')
-      ascii_text.gsub!(/\u{188}/, '1/4')
-      ascii_text.gsub!(/\u{190}/, '3/4')
-      ascii_text.gsub!(/\u8531/, '1/3')
-      ascii_text.gsub!(/\u8532/, '2/3')
+      ascii_text.gsub!('½', '1/2')
+      ascii_text.gsub!('¼', '1/4')
+      ascii_text.gsub!('¾', '3/4')
+      ascii_text.gsub!('⅓', '1/3')
+      ascii_text.gsub!('⅔', '2/3')
       ascii_text.tr!("ÀÁÂÃÄÅàáâãäåĀāĂăĄąÇçĆćĈĉĊċČčÐðĎďĐđÈÉÊËèéêëĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħÌÍÎÏìíîïĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłÑñŃńŅņŇňŉŊŋÒÓÔÕÖØòóôõöøŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠšſŢţŤťŦŧÙÚÛÜùúûüŨũŪūŬŭŮůŰűŲųŴŵÝýÿŶŷŸŹźŻżŽž",
                      "AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgGgHhHhIIIIiiiiIiIiIiIiIiJjKkkLlLlLlLlLlNnNnNnNnnNnOOOOOOooooooOoOoOoRrRrRrSsSsSsSssTtTtTtUUUUuuuuUuUuUuUuUuUuWwYyyYyYZzZzZz")
       ascii_text.gsub!(/\&/, '')
